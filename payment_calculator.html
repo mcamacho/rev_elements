@@ -1,0 +1,41 @@
+<div class="payment-calculator fix">
+    <div class="parameters-wrap">
+        <div class="parameter fix">
+            <h2>How much would you like to borrow?</h2>
+            <div class="limits fix" used="{setup_used_msrp=msrp}" new="{setup_new_msrp=msrp}">
+                <span class="init fl">$1,000</span>
+                <span class="last fr" maxv="{original_price}">${original_price}</span>
+            </div>
+            <div class="curr"><div id="amount"></div>$<span id="curr-amount"></span></div>
+        </div>
+      <div class="clear"></div>
+        <div class="parameter fix">
+            <h2>Over how long?</h2>
+            <div class="limits fix">
+                <span class="init fl">1 year</span>
+                <span class="last fr">7 years</span>
+            </div>
+            <div class="curr"><div id="period"></div><span id="curr-period"></span> years</div>
+        </div>
+      <div class="clear"></div>
+        <div class="parameter fix">
+            <h2>Your credit rating?</h2>
+            <div class="limits fix">
+                <span class="init fl">500</span>
+                <span class="last fr">850</span>
+            </div>
+            <div class="curr"><div id="rating"></div><span id="curr-rating"></span></div>
+        </div>
+      <div class="clear"></div>
+    </div>
+    <div class="result-wrap">
+      <h2>Estimated monthly payment:</h2>
+        <div>$<span id="monthly"></span></div>
+        <a href="" class="apply" title="Apply now">Apply Now</a>
+        <p>Vehicles in this Range</p>
+        <p class="novehicles" style="display: none;">No Vehicles Found</p>
+        <a href="#" class="preveh" title="Pre Owned vehicles">Pre Owned</a>
+        <a href="#" class="newveh" title="New vehicles">New</a>
+    </div>
+    <div class="clear"></div>
+</div>
