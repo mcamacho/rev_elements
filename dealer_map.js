@@ -3,7 +3,6 @@
     /*global document, window, jQuery, google*/
     /*attach to marker, links and infowindow*/
     function attachInfoWindow(marker, message) {
-        var contentext = '<h5>' + message.name + '</h5><a href="' + message.link + '" target="_blank">Open Site</a>';
         var contentext = '<h5>' + message.City + '</h5><a href="' + message.City + '" target="_blank">Open Site</a>';
         var infowindow = new google.maps.InfoWindow({
             content: contentext
@@ -31,12 +30,16 @@
             map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions),
             ele,
             marker,
-            mtitle;
+            mtitle,
+            mlongitude,
+            mlatitude;
         /*marker loop*/
         for (ele = 0; ele < msg.length; ele = ele + 1) {
-            mtitle = msg[ele].name;
+            mtitle = String(msg[ele].City);
+            mlatitude = Number(msg[ele].Latitude);
+            mlongitude = Number(msg[ele].Longitude) * -1;
             marker = new google.maps.Marker({
-                position: new google.maps.LatLng(msg[ele].latitude, msg[ele].longitude),
+                position: new google.maps.LatLng(mlatitude, mlongitude),
                 icon: markerIcon,
                 map: map,
                 title: mtitle
@@ -49,7 +52,8 @@
         jQuery.ajax({
             type: 'POST',
             dataType: 'json',
-            url: '{home}/wp-content/themes/_bootrev/js/dealers.json',
+            data: 'json=true&requesttype=maps',
+            url: '{THEME_ROOT}/_ajax.php',
             success: function (msg) {
                 initialize(msg.dealers);
             }
