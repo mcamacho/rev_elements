@@ -4,6 +4,7 @@
     /*attach to marker, links and infowindow*/
     function attachInfoWindow(marker, message) {
         var contentext = '<h5>' + message.name + '</h5><a href="' + message.link + '" target="_blank">Open Site</a>';
+        var contentext = '<h5>' + message.City + '</h5><a href="' + message.City + '" target="_blank">Open Site</a>';
         var infowindow = new google.maps.InfoWindow({
             content: contentext
         });
