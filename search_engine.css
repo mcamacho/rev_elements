@@ -1,0 +1,82 @@
+/*Drill Down*/
+.drillIt { position: relative; width: 100%; min-height: 8em; z-index: 10; /*border: 2px solid {setup_color_1};*/ background-color: {setup_color_5}; color: {setup_color_4}; font: 12px arial, sans-serif; padding-bottom: 0.4em; }
+/*.drillIt.stuck { position: fixed; top: 0; width: inherit; }*/
+.drillIt ul, .drillIt p { margin: 0; }
+.drillIt li { line-height: 1.3em; }
+.drillIt form { margin: 0; }
+.drillIt select { height: auto; }
+
+.mainb.stuck { position: fixed; top: 5px; right: 5px; width: 1em; text-indent: -9999px; }
+.mainb.stuck .sclose{ background-color: {setup_color_1}; }
+
+.gsearch { width: 100%; }
+.bcrumb { width: 96%; margin-left: 2%; background-color: {setup_color_2}; border: 1px solid {setup_color_2}; }
+
+.basic select { width: 100%;/*104px;*/ height: 26px; margin: 0 1px; }
+span.dd { position: absolute; top: 2px; left: 1px; background: {setup_color_text_1} none; cursor: default; z-index: 1; width: 103px; height: 22px; color: {setup_color_4}; line-height: 22px; border-radius: 2px; text-align: center; font-weight: bold; visibility: hidden; }
+span.dd.hov { background-color: {setup_color_2}; border-color: {setup_color_3}; }
+span.dd .condicon { display: inline-block; background: url('{home}/wp-content/mu-plugins/r2/js/ui/default/images/ui-icons_464646_256x240.png') -64px -16px; position: relative; top: 4px; right: -5px; width: 16px; height: 16px;  }
+#tabs1 button, #tabs2 button, #tabs3 button { width: 100%;/*104px;*/ }
+
+.bcrumb label { display: inline-block; background-color: {setup_color_text_1}; padding: 0 4px; margin: 2px 3px; }
+.bcrumb span { padding: 0 2px; margin: 0 -2px 0 2px; color: {setup_color_2}; font-weight: bold; cursor: pointer; }
+
+.search-top-page { /*position: absolute; right: 5px; top: 30px;*/ color: {setup_color_text_1}; text-align: center; font-weight: bold; padding: 1%; }
+.search-top-page .lab { text-transform: uppercase; font-size: 0.8em; }
+.topnav .quantity span { font-size: 3.8em; line-height: 0.9em; font-weight: bold; }
+.search-top-page .wrap_show { display: none; }
+
+#inventory .condition { position: relative; z-index: 10; opacity: 0; -khtml-appearance: none }
+.ie7 #inventory .condition, .ie8 #inventory .condition { -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; filter: alpha(opacity=0); }
+
+#filter li.wp { /*float: left;*/ position: relative; background-color: transparent; clear: left; }
+#filter button { color: {setup_color_4}; margin: 2px 1px; }
+#filter button:hover, #filter button:focus { border-color: {setup_color_3}; background: {setup_color_2} none; }
+#filter button.ready { /*color: green;*/ }
+#filter button.included { color: {setup_color_1}; }
+.drillIt .loading { background: {setup_color_text_1} url('http://cdn.hostrevo.com.s3.amazonaws.com/assets/img/loader3.gif') center repeat; }
+#filter .ui-state-hover { background: {setup_color_2} none; border-color: {setup_color_text_1}; }
+#tabs .ui-tabs-nav .ui-state-default { background: {setup_color_1} none; top: 0; margin: 0; border-width: 0; width: 33.3%; }
+#filter #tabs .ui-tabs-nav a { color: {setup_color_text_1}; }
+#filter #tabs .ui-tabs-selected a { color: {setup_color_text_1}; }
+#tabs .ui-tabs-nav .ui-state-default a.tabs2, #tabs .ui-tabs-nav .ui-state-default a.tabs3 { border-left: 2px solid {setup_color_3}; }
+#tabs .ui-tabs-nav .ui-tabs-selected { background-color: transparent; }
+#filter .ui-state-default a { color: {setup_color_3}; text-align: center; width: 100%; padding: .5em 0; }
+#filter .ui-state-active a { color: {setup_color_4}; }
+
+li.wp ul.opt { /*position: absolute; left: 3px; z-index: 100; display: none; border-left: 1px solid {setup_color_text_1};*/ background-color: {setup_color_2}; /*top: 25px;*/ }
+/*li.wp:hover ul.opt, li.wp.mhover ul.opt { display: block; }*/
+li.wp li { width: 100px; float: left; text-align: center; padding: 2px; }
+li.wp a { display: block; line-height: 1.8em; height: 1.8em; color: {setup_color_text_3}; background-color: {setup_color_text_1}; }
+li.wp a:hover { color: {setup_color_text_2}; background-color: {setup_color_2}; }
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; clear: both; }
+.ie7 .clearfix { clear: none; }
+
+.ui-tabs .ui-tabs-panel { padding: 0.45em 0.4em;  }
+.ui-autocomplete { max-height: 300px; overflow-y: auto; overflow-x: hidden; padding-right: 20px; }
+
+#tabs, .ui-tabs .ui-tabs-nav { background: transparent none; border-width: 0; border-radius: 0; padding: 0; }
+#tabs .ui-tabs-nav span { display: none; }
+#tabs .navs { display: none; }
+#tabs1, #tabs2, #tabs3 { /*margin-right: 28%;*/ min-height: 6em; }
+#tabs3 li { width: 100%; }
+
+.wp .ui-button-text-icon-secondary .ui-button-text { padding: .1em; width: 100%;/*100px;*/ }
+
+#sort { font-size: 10px; }
+.garrange a.dir { background: url('http://cdn.hostrevo.com.s3.amazonaws.com/assets/img/sort_arrows.png') no-repeat -14px 0; text-indent: -9999px; }
+.garrange a.dir.asc { background-position: -1px 0; }
+.showresults a { display: block; letter-spacing: 1px; background-color: {setup_color_1=#c10017}; color: {setup_color_text_1}; padding: 2px; text-align: center; font-weight: bold; }
+.garrange, .showresults { display: none; }
+.showresults { width: 68%; margin: 2px auto; }
+#vin { font-size: 2.5em; width: 90%; height: 1em; background: {setup_color_text_1} url('http://cdn.hostrevo.com.s3.amazonaws.com/assets/img/toolbar_find.png') no-repeat 100% 50%; }
+#linetype, #blocktype { padding: 0.3em 1em; background-color: {setup_color_1}; color: {setup_color_text_1}; }
+
+@media (max-width: 767px) {
+    #filter .ui-state-default a { text-transform: lowercase; }
+    .topnav .quantity span { font-size: 32px; }
+    .drillIt { font-size: 11px; }
+}
