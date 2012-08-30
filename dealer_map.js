@@ -1,4 +1,4 @@
-(function() {
+var mapsC = (function() {
 	'use strict'; /*global document, window, jQuery, google, gmapGreyStyle*/
 	// initialize the map
 
@@ -96,11 +96,14 @@
 	}
 	// load dealer map data
 
-	function getData() {
+	function _getData(zip, radius) {
+		var datax = 'json=true&requesttype=maps';
+		datax = typeof zip !== 'undefined' ? datax + '&zipcode=' + zip : datax;
+		datax = typeof radius !== 'undefined' ? datax + '&radius=' + radius : datax;
 		jQuery.ajax({
 			type: 'POST',
 			dataType: 'json',
-			data: 'json=true&requesttype=maps',
+			data: datax,
 			url: '{THEME_ROOT}/_ajax.php',
 			success: function(msg) {
 				/* console.log(msg); */
@@ -118,7 +121,10 @@
 			}
 		});
 	}
-	jQuery(document).ready(function() {
-		getData();
-	});
+	
+	return { getData: _getData };
 }());
+
+jQuery(document).ready(function() {
+		mapsC.getData();
+	});
