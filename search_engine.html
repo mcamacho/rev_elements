@@ -1,90 +1,113 @@
-<div class="drillIt clearfix notranslate" primarymake={setup_dealer_primary_make}>
+<div class="drillIt clearfix notranslate" primarymake={setup_dealer_primary_make} defaultcondition={setup_type_default}>
   
   <div class="gsearch">
     
     <form action="{home}/inventory/?" id="inventory" name="inventory">
       <fieldset id="filter" title="Filter" name="filter">
         <div id="tabs">
-          <ul class="navs">
+          <!--
+<ul class="navs">
             <li><a href="#tabs1" class="tabs1">Search <span class="new">New</span><span class="used">Pre Owned</span></a></li>
             <li class="hidden-phone"><a href="#tabs2" class="tabs2">Advanced Search</a></li>
             <li><a href="#tabs3" class="tabs3">Stock/Vin Search</a></li>
           </ul>
-          <ul id="tabs1" class="basic unstyled clearfix">
-            <li class="wp">
-              <select name="condition" id="condition" class="condition" title="Condition" disabled="disabled">
-                [condition_set]
-              </select>
-              <span class="select dd">Condition <span class="condicon"></span></span>
-            </li>
-            <li class="wp">
-              <button type="button" value="year" name="filter">Year</button>
-              <ul class="opt unstyled fix" title="year">
-              </ul>
-            </li>
-            <li class="wp">
-              <button type="button" value="make" name="filter">Make</button>
-              <ul class="opt unstyled fix" title="make">
-              </ul>
-            </li>
-            <li class="wp">
-              <button type="button" value="standard_model" name="filter">Model</button>
-              <ul class="opt unstyled fix" title="standard_model">
-              </ul>
-            </li>
-          </ul>
-          <ul id="tabs2" class="hidden-phone advanced unstyled clearfix">
-            <li class="wp">
-              <button type="button" value="standard_body" name="filter">Body</button>
-              <ul class="opt unstyled fix" title="standard_body">
-              </ul>
-            </li>
-            <li class="wp">
-              <button type="button" value="ext_color_generic" name="filter">Color</button>
-              <ul class="opt unstyled fix" title="ext_color_generic">
-              </ul>
-            </li>
-            <li class="wp">
-              <button type="button" value="fuel_type" name="filter">Engine</button>
-              <ul class="opt unstyled fix" title="fuel_type">
-              </ul>
-            </li>
-            <li class="wp">
-              <button type="button" value="milage" name="filter">Mileage</button>
-              <ul class="opt unstyled fix" title="milage">
-              </ul>
-            </li>
-            <li class="wp">
-              <button type="button" value="mpg_city" name="filter">MPG City</button>
-              <ul class="opt unstyled fix" title="mpg_city">
-              </ul>
-            </li>
-            <li class="wp">
-              <button type="button" value="mpg_hwy" name="filter">MPG Hwy</button>
-              <ul class="opt unstyled fix" title="mpg_hwy">
-              </ul>
-            </li>
-            <li class="wp">
-              <button type="button" value="msrp" name="filter" used="{setup_used_msrp=msrp}" new="{setup_new_msrp=msrp}">Price</button>
-              <ul class="opt unstyled fix" title="msrp">
-              </ul>
-            </li>
-            <li class="wp">
-              <button type="button" value="transmission" name="filter">Transmission</button>
-              <ul class="opt unstyled fix" title="transmission">
-              </ul>
-            </li>
-          </ul>
-          <ul id="tabs3" class="unstyled clearfix">
-            <li class="wp">
-                <!--<label for="stock">Stock #</label>
-                <input type="text" id="stock" />
-                <label for="vin">Type the No.</label>-->
-                <input type="text" id="vin" />
-                <!--<label class="acomplete" for="acomplete">Search</label>
-                <input id="acomplete" />-->
-            </li>
-          </ul>
+-->
+		  <div class="accordion-group">
+		  	<div class="accordion-heading">
+		    	<a href="#tabs1" class="tabs1 accordion-toggle" data-toggle="collapse" data-parent="#tabs">Search <span class="new">New</span><span class="used">Pre Owned</span></a>
+		    </div>
+		    <div id="tabs1" class="accordion-body collapse in">
+	          <ul class="basic unstyled clearfix">
+	            <li class="wp">
+	              <select name="condition" id="condition" class="condition" title="Condition" disabled="disabled">
+	                [condition_set]
+	              </select>
+	              <span class="select dd">Condition <span class="condicon"></span></span>
+	            </li>
+	            <li class="wp">
+	              <button type="button" value="year" name="filter">Year</button>
+	              <ul class="opt unstyled fix" title="year">
+	              </ul>
+	            </li>
+	            <li class="wp">
+	              <button type="button" value="make" name="filter">Make</button>
+	              <ul class="opt unstyled fix" title="make">
+	              </ul>
+	            </li>
+	            <li class="wp">
+	              <button type="button" value="standard_model" name="filter">Model</button>
+	              <ul class="opt unstyled fix" title="standard_model">
+	              </ul>
+	            </li>
+	          </ul>
+		    </div>
+		  </div>
+		  <div class="accordion-group">
+		  	<div class="accordion-heading">
+		    	<a href="#tabs2" class="tabs2 accordion-toggle" data-toggle="collapse" data-parent="#tabs">Advanced Search</a>
+		    </div>
+		    <div id="tabs2" class="accordion-body collapse">
+	          <ul class="advanced unstyled clearfix">
+	            <li class="wp">
+	              <button type="button" value="standard_body" name="filter">Body</button>
+	              <ul class="opt unstyled fix" title="standard_body">
+	              </ul>
+	            </li>
+	            <li class="wp">
+	              <button type="button" value="ext_color_generic" name="filter">Color</button>
+	              <ul class="opt unstyled fix" title="ext_color_generic">
+	              </ul>
+	            </li>
+	            <li class="wp">
+	              <button type="button" value="fuel_type" name="filter">Engine</button>
+	              <ul class="opt unstyled fix" title="fuel_type">
+	              </ul>
+	            </li>
+	            <li class="wp">
+	              <button type="button" value="milage" name="filter">Mileage</button>
+	              <ul class="opt unstyled fix" title="milage">
+	              </ul>
+	            </li>
+	            <li class="wp">
+	              <button type="button" value="mpg_city" name="filter">MPG City</button>
+	              <ul class="opt unstyled fix" title="mpg_city">
+	              </ul>
+	            </li>
+	            <li class="wp">
+	              <button type="button" value="mpg_hwy" name="filter">MPG Hwy</button>
+	              <ul class="opt unstyled fix" title="mpg_hwy">
+	              </ul>
+	            </li>
+	            <li class="wp">
+	              <button type="button" value="msrp" name="filter" used="{setup_used_msrp=msrp}" new="{setup_new_msrp=msrp}">Price</button>
+	              <ul class="opt unstyled fix" title="msrp">
+	              </ul>
+	            </li>
+	            <li class="wp">
+	              <button type="button" value="transmission" name="filter">Transmission</button>
+	              <ul class="opt unstyled fix" title="transmission">
+	              </ul>
+	            </li>
+	          </ul>
+		    </div>
+		  </div>
+		  <div class="accordion-group">
+		  	<div class="accordion-heading">
+		    	<a href="#tabs3" class="tabs3 accordion-toggle" data-toggle="collapse" data-parent="#tabs">Stock/Vin Search</a>
+		    </div>
+		    <div id="tabs3" class="accordion-body collapse">
+	          <ul class="unstyled clearfix">
+	            <li class="wp">
+	                <!--<label for="stock">Stock #</label>
+	                <input type="text" id="stock" />
+	                <label for="vin">Type the No.</label>-->
+	                <input type="text" id="vin" />
+	                <!--<label class="acomplete" for="acomplete">Search</label>
+	                <input id="acomplete" />-->
+	            </li>
+	          </ul>
+		    </div>
+		  </div>
         </div>
       </fieldset>
       <input type="hidden" id="" value="" class="newFilter" />
@@ -113,7 +136,20 @@
     </div>
   </div>
   
-  <div class="bcrumb fix"></div>
+  <div id="searchr">
+  	<div class="bcrumb fix"></div>
+  	<div class="location">
+	  <ul class="unstyled clearfix">
+	    <li class="wp">
+	        <input type="text" id="zipcode" placeholder="Zip Code" />
+	    </li>
+	    <li class="wp">
+	        <input type="text" id="radius" placeholder="Radius" />
+	    </li>
+	
+	  </ul>
+	</div>
+  </div>
   <div class="showresults fix">
     <a href="#">SEARCH</a>
   </div>
