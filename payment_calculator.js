@@ -20,7 +20,7 @@
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            data: 'json=true&inventory=true&condition=' + condition + '&' + condterm + '=' + range,
+            data: 'json=true&requesttype=count&condition=' + condition + '&' + condterm + '=' + range,
             url: '{THEME_ROOT}/_ajax.php',
             success: function (msg) {
                 if (Number(msg.count) > 0) {
@@ -75,6 +75,7 @@
         $('#monthly').text(x1 + x2);
     }
     $(d).ready(function () {
+    	//get the variable for new and preowned payment values
         newp = $('.payment-calculator .limits').attr('new');
         usedp = $('.payment-calculator .limits').attr('used');
         //assign maxv to borrow depending on existance of price
@@ -131,6 +132,7 @@
             d.cookie = 'search=; path=/inventory; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
             w.location = '{home}/inventory/' + cond + minr + '-' + maxr;
         });
+        // if vehicle single
         var val = $('.preapproved').attr('href');
         if (val) {
             $('a.apply').click(function (e) {
@@ -140,6 +142,7 @@
         } else {
             $('a.apply').hide();
         }
+        // trigger the main function
         calculate();
     });
 }(jQuery, document, window));
