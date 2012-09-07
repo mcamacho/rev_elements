@@ -159,7 +159,7 @@
 	postData = function(out) {
 		var search = '';
 		search += 'json=true';
-		search += '&inventory=true';
+		/* search += '&inventory=true'; */
 		if (jQuery('#sort').val() !== 'empty') {
 			search += '&sort=' + jQuery('#sort').val();
 		}
@@ -214,6 +214,9 @@
 				jQuery('div.search-top-page span.total').text(msg.count);
 				getCount();
 				scrollverify(msg.count);
+			},
+			error: function(jqxhr, msg) {
+				console.log(msg);
 			}
 		});
 	};
@@ -324,7 +327,7 @@
 			}
 		}
 		if (typeof type === 'undefined') {
-			countUpdate();
+			/* countUpdate(); */
 			if (pArray[0] === 'inventory' && typeof(customDrill) !== 'undefined' && customDrill.sort) {
 				jQuery('#sort option:contains(' + customDrill.sort[0] + ')').attr('selected', 'selected');
 				if (customDrill.sort[1] === 'ASC') {
@@ -332,6 +335,8 @@
 				} else {
 					jQuery('#sort').change();
 				}
+			} else {
+				eleAjax();
 			}
 		} else {
 			eleAjax();
@@ -418,12 +423,6 @@
 			jQuery('#sort option[title="price"]').val(msrpar + '-DESC').attr('title', msrpar);
 		}
 		jQuery('button[value="msrp"]').val(msrpar).next().attr('title', msrpar);
-		// Activate the tabs using jqueryui tabs
-/*
-jQuery('#tabs').tabs({
-            show: function () { jQuery('ul.navs').show(); }
-        });
-*/
 		// Add hover to buttons list
 		jQuery('li.wp').hover(function() {
 			jQuery(this).addClass('mhover');
