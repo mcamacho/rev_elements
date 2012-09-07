@@ -66,7 +66,6 @@ li.wp a:hover { color: {setup_color_text_2}; background-color: {setup_color_2}; 
 #tabs3 ul { height: 20em; }
 #tabs3 ul ul { height: 17em; }
 #tabs3 li { width: 100%; }
-#searchr .location { display: none; }
 
 .wp .ui-button-text-icon-secondary .ui-button-text { padding: .1em; width: 100%;/*100px;*/ }
 
@@ -79,12 +78,7 @@ li.wp a:hover { color: {setup_color_text_2}; background-color: {setup_color_2}; 
 #vin { font-size: 1.5em; width: 94%; height: 1em; background: {setup_color_text_1} url('http://cdn.hostrevo.com.s3.amazonaws.com/assets/img/toolbar_find.png') no-repeat 100% 50%; }
 #linetype, #blocktype { padding: 0.3em 1em; background-color: {setup_color_1}; color: {setup_color_text_1}; }
 
-#nav .bcrumb { width: 100%; float: left; margin: 0; border-width: 0; padding: 2px 0; }
-#nav .location { width: 300px; float: left; margin-left: -300px; padding: 4px 0; }
-#nav input { width: 100px; margin-bottom: 0; border-width: 0; padding: 0 0.5em; }
-
-@media (max-width: 767px) {
-    #filter .ui-state-default a { text-transform: lowercase; }
-    .topnav .quantity span { font-size: 32px; }
-    .drillIt { font-size: 11px; }
-}
+.inventoryWrapper .bcrumb { width: 100%; margin: 0; border-width: 0; padding: 0; }
+#tabs .location { width: 300px; padding: 6px 0 0; }
+#tabs .location li { clear: none; float: left; width: 144px; }
+#tabs .location input { width: 100px; margin: 0 10px; border-width: 0; padding: 0 0.5em; }

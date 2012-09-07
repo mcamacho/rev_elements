@@ -12,7 +12,7 @@
 		ttt = sc.indexOf('search') > -1 ? sc.slice(sc.indexOf('search') + 7, sc.indexOf(';', sc.indexOf('search') + 7)) : '';
 		tt = sc.indexOf('scroll') > -1 ? sc.slice(sc.indexOf('scroll') + 7, sc.indexOf(';', sc.indexOf('scroll') + 7)) : '';
 		t = sc.indexOf('show') > -1 ? sc.slice(sc.indexOf('show') + 5, sc.indexOf(';', sc.indexOf('show') + 5)) : '';
-		zipc = sc.indexOf('zipcode') > -1 ? sc.slice(sc.indexOf('zipcode') + 8, sc.indexOf(';', sc.indexOf('zipcode') + 8)) : '';
+		zipc = sc.indexOf('zipcode') > -1 ? sc.slice(sc.indexOf('zipcode') + 8, sc.indexOf('zipcode') + 13) : '';
 		radiusc = sc.indexOf('radius') > -1 ? sc.slice(sc.indexOf('radius') + 7, sc.indexOf(';', sc.indexOf('radius') + 7)) : ''; 
 		// update cookie
 		if (ttt !== '' && pathx.indexOf('inventory') > -1) {
@@ -560,18 +560,16 @@ jQuery('#filter button').button({
 			jQuery('#radius').removeAttr('disabled');
 			if (regzip.test(jQuery('#zipcode').val()) && regrad.test(jQuery('#radius').val())) {
 				// save the new cookies
-				document.cookie = 'zipcode=' + jQuery('#zipcode').val() + ';';
-				document.cookie = 'radius=' + jQuery('#radius').val() + ';';
+				document.cookie = 'radius=' + escape(jQuery('#radius').val()) + '; path=/';
+				document.cookie = 'zipcode=' + escape(jQuery('#zipcode').val()) + '; path=/';
 				eleAjax();
 			} else {
-				jQuery('#zipcode').val('');
-				jQuery('#radius').val('');
+				jQuery(this).val('');
 			}
 		});
 		if (pArray[0] === 'inventory') {
-			jQuery('#searchr .location').show();
 			// reposition of the breadcrumb and location info
-			jQuery('#searchr').appendTo('#nav');
+			jQuery('.bcrumb').prependTo('.inventoryWrapper');
 		}
 		// search function
 		jQuery('.showresults').click(function(e) {
