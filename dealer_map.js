@@ -1,6 +1,10 @@
 var mapsC = (function() {
 	'use strict'; /*global document, window, jQuery, google, gmapGreyStyle, dealerloc*/
-	// initialize the map
+	var zc = document.cookie,
+		zczipi = zc.indexOf('zipcode'),
+		zcradiusi = zc.indexOf('radius'),
+		_zipc = zczipi > -1 ? zc.slice(zczipi + 8, zczipi + 13) : '',
+		_radiusc = zcradiusi > -1 ? zc.slice(zcradiusi + 7, zc.indexOf(';', zcradiusi + 7)) : '';
 
 	function initialize(msg) {
 		var dealers = msg,
@@ -17,10 +21,11 @@ var mapsC = (function() {
 			dbasecache = [],
 			counter = 0,
 			mloc, swy, swx, ney, nex, mapOptions, map, marker;
-		// attach to marker, links and infowindow
 
 		function attachInfoWindow(marker) {
-			var contentext = '<h5>' + mtitle[counter] + '</h5><a href="http://' + mid[counter] + '.hostrevo.com" target="_blank">Open Site</a>';
+			var contentext = '<h5>' + mtitle[counter] + '</h5>';
+			contentext += '<a href="http://' + mid[counter] + '.hostrevo.com" target="_blank">Open Site</a>';
+			contentext += '<br /><a href="javascript:mapsC.assign(' + mzip[counter] + ', 30)">Search Inventory</a>';
 			var infowindow = new google.maps.InfoWindow({
 				content: contentext
 			});
@@ -33,11 +38,10 @@ var mapsC = (function() {
 			} else { /* console.log(counter + '/' + dealers.length + ' -- ' + swy + '/' + swx + ' - ' + ney + '/' + nex); */
 				var msw = new google.maps.LatLng(swx, swy);
 				var mne = new google.maps.LatLng(nex, ney);
-				map.fitBounds(new google.maps.LatLngBounds(msw, mne));
-				/* console.log(dbasecache.toString()); */
+				map.fitBounds(new google.maps.LatLngBounds(msw, mne)); /* console.log(dbasecache.toString()); */
 			}
 		}
-		// create marker
+		// attach to marker, links and infowindow
 
 		function markeradd(results, status) {
 			if (status === google.maps.GeocoderStatus.OK || status === 'dealerloc') {
@@ -64,7 +68,7 @@ dbasecache.push(' { id: "' + dealers[counter].blog_id + '", name: "' + dealers[c
 				}
 			}
 		}
-		// when dealerloc find loc for id
+		// create marker
 
 		function idloc(ids) {
 			for (var rr = 0; rr < dealerloc.length; rr += 1) {
@@ -73,7 +77,7 @@ dbasecache.push(' { id: "' + dealers[counter].blog_id + '", name: "' + dealers[c
 				}
 			}
 		}
-		// marker loop
+		// when dealerloc find loc for id
 
 		function markerloop() {
 			maddress.push(dealers[counter].address);
@@ -97,7 +101,7 @@ dbasecache.push(' { id: "' + dealers[counter].blog_id + '", name: "' + dealers[c
 				}, 'dealerloc');
 			}
 		}
-		// create map and init bound variables
+		// marker loop
 
 		function cmapinit(ya, xa) {
 			// init bound location variables
@@ -109,13 +113,13 @@ dbasecache.push(' { id: "' + dealers[counter].blog_id + '", name: "' + dealers[c
 				zoom: 12,
 				styles: gmapGreyStyle,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
-				maxZoom: 10
+				maxZoom: 12
 			};
 			map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 			// call for marker creation loop
 			markerloop();
 		}
-		// dealerloc var vs geocode init
+		// create map and init bound variables
 		if (typeof dealerloc === 'undefined') {
 			// using geocode service
 			mgeocoder.geocode({
@@ -132,8 +136,9 @@ dbasecache.push(' { id: "' + dealers[counter].blog_id + '", name: "' + dealers[c
 			mloc = idloc(dealers[0].blog_id);
 			cmapinit(mloc[0], mloc[1]);
 		}
+		// dealerloc var vs geocode init
 	}
-	// load dealer map data
+	// initialize function
 
 	function _getData(zip, radius) {
 		// load cache dealerloc json
@@ -149,15 +154,63 @@ dbasecache.push(' { id: "' + dealers[counter].blog_id + '", name: "' + dealers[c
 				if (msg.dealers) {
 					initialize(msg.dealers);
 				} else {
-					// echo no dealers
+					// echo all dealers
+					_getData('zipcode', 'radius');
 				}
 			}
 		});
 	}
+	// get dealer map data
+
+	function validate(ids) {
+		var reg = (ids === 'zipdealer') ? /^[0-9]{5}$/ : /^[0-9]{2,3}$/;
+		return reg.test(jQuery('#' + ids).val())
+	}
+	// zip and radius input fields validator
+
+	function _ichange(e) {
+		// validate input fields
+		if (validate(jQuery(e).attr('id'))) {
+			if (validate('zipdealer') && validate('radiusdealer')) {
+				var dzip = jQuery('#zipdealer').val();
+				var dradius = jQuery('#radiusdealer').val();
+				// trigger map dealer search
+				_getData(dzip, dradius);
+				// update search inventory parameters
+				jQuery('#zipcode').val(dzip);
+				jQuery('#radius').val(dradius).change();
+				// save the new cookies
+				document.cookie = 'radius=' + escape(dradius) + '; path=/';
+				document.cookie = 'zipcode=' + escape(dzip) + '; path=/';
+			}
+		} else {
+			jQuery(e).val('');
+		}
+	}
+	// input fields change event
+
+	function _assign(zipd, radiusd) {
+		// save the new cookies
+		document.cookie = 'radius=' + escape(radiusd) + '; path=/';
+		document.cookie = 'zipcode=' + escape(zipd) + '; path=/';
+		// reload the page
+		document.location.reload();
+	}
+	// change zip and radius from a link
 	return {
-		getData: _getData
+		zipc: _zipc,
+		radiusc: _radiusc,
+		assign: _assign,
+		getData: _getData,
+		ichange: _ichange
 	};
 }());
 jQuery(document).ready(function() {
-	mapsC.getData();
+	if (mapsC.zipc !== '' && mapsC.radiusc !== '') {
+		mapsC.getData(mapsC.zipc, mapsC.radiusc);
+		jQuery('#zipdealer').val(mapsC.zipc);
+		jQuery('#radiusdealer').val(mapsC.radiusc);
+	} else {
+		mapsC.getData();
+	}
 });
