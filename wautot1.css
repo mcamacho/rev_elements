@@ -1,0 +1,107 @@
+#content { margin-bottom: 0; }
+#main { float: left; width: 100%; }
+#main .mainw { margin-right: 310px; }
+#rightbar { float: left; width: 300px; margin-left: -310px; padding: 5px; }
+
+@media (max-width: 767px) {
+    #content { position: relative; }
+    #main { float: none; position: relative; }
+    #main.cover { float: left; margin-left: -101%; }
+    #main .mainw { margin-right: 0; }
+    #rightbar { float: none; margin-left: 0; width: 100%; padding: 0; }
+    #rightbar.cover { float: left; }
+    #vehicle-list.fix .vehicle { width: 48.5%; }
+     
+    .topnav .navwrap .searchlink { display: block; position: absolute; top: 0.1em; right: 0; }
+    .topnav .navwrap .menulink { display: block; position: absolute; top: 0.1em; right: 2.5em; }
+    .topnav #nav { display: none; }
+    .topnav .dealerMaker a { float: none; width: auto; height: auto; text-align: left; margin-right: 5em; }
+    .topnav .dealerMaker .dealer { display: none; }
+    .topnav .dealerMaker h1 { display: block; }
+    .topnav .details li, .topnav .details a, .topnav .menumodel .details div, .topnav .details div span, .topnav .details h3 { font-size: 9px; }
+    .topnav .details h4 { font-size: 13px; }
+    .topnav.stuck .navwrap { width: 100%; }
+    .topnav.stuck { position: fixed; top: 0; left: 0; }
+    /*#wrap { padding-top: 2em; }*/
+    .mainw #map_canvas { height: 200px; }
+    
+    #mainslider h3.title { font-size: 1.3em; line-height: 3em; }
+    #mainslider .dynamic_content { height: auto; }
+    #mainslider .dynamic_content ul, #mainslider .modelright { display: none; }
+    #mainslider .dynamic_content .vehicle_image { position: relative; top: 0; left: 0; width: 70%; margin: 0 auto; }
+    
+    .modelthumbs.rw li { width: 48.8%; }
+}
+
+@media (max-width: 480px) {
+    #nav ul.dropdown li ul { /*width: 40%;*/ display: none !important; }
+    #nav li.menumodel li.fix { width: 100%; }
+    #nav .menumodel .modelInfo { width: 0; height: 0; visibility: hidden; }
+    #nav ul.dropdown li.menunewcount li,
+    #nav ul.dropdown li.menupreowned li { width: 99%; }
+    #vehicle-list.fix .vehicle { float: none; width: 98%; }
+    #mainslider .h3.title { font-size: 1em; line-height: 4em; }
+    
+    .modelthumbs.rw li { width: 98%; }
+}
+
+@media (max-width: 320px) {
+    #special_thumbs .fix li { float: none; width: auto; height: 33px; overflow: hidden; }
+    #findDealer div label { display: block; }
+}
+
+@media (min-width: 480px) and (max-width: 979px) {
+    #nav ul.dropdown ul { width: 480px; }
+    #nav .menumodel .fix .image { width: 45%; margin-top: 29%; }
+    #nav .menumodel .fix .details { width: 50%; font-size: 9px; }
+    #nav ul.dropdown li.menunewcount li,
+    #nav ul.dropdown li.menupreowned li { width: 32%; }
+    .topnav #nav ul.fix.dropdown li.menunewcount li a,
+    .topnav #nav ul.fix.dropdown li.menunewcount li a:hover,
+    .topnav #nav ul.fix.dropdown li.menupreowned li a,
+    .topnav #nav ul.fix.dropdown li.menupreowned li a:hover { height: 2.5em; }
+    #nav ul.dropdown li.menunewcount img,
+    #nav ul.dropdown li.menupreowned img { display: none; }
+    #nav ul.fix.dropdown li.menunewcount .model,
+    #nav ul.fix.dropdown li.menupreowned .make { left: 0.5em; top: 1em; height: 1em; width: 77%; text-align: center; }
+    #nav ul.fix.dropdown li.menunewcount .quantity,
+    #nav ul.fix.dropdown li.menupreowned .quantity { top: 0.2em; height: 1.5em; padding-top: 0.8em; }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    #vehicle-list li.down-payment { line-height: 1em; }
+    }
+@media (max-width: 979px) {  
+    #vehicle-list.fix .finance-wrap { float: none; }  
+}
+@media (max-width: 793px) {
+}
+
+@media (min-width: 1025px) {
+    #vehicle-list.fix .vehicle { width: 32%; }
+    .search-top-page .layout { display: block; }
+    .modelthumbs.rw li { width: 32.2%; }
+}
+
+@media (min-width: 1350px) {
+    #vehicle-list.fix .vehicle { width: 23.5%; }
+    .modelthumbs.rw li { width: 24%; }
+}
+
+@media (min-width: 1600px) {
+    #vehicle-list.fix .vehicle { width: 18.5%; }
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+    #nav ul.dropdown ul { width: 980px; }
+    #nav .menumodel .fix .image { width: 57%; }
+    #nav ul.dropdown li.menunewcount li,
+    #nav ul.dropdown li.menupreowned li { width: 32.8%; }
+}
+
+@media (min-width: 1200px) {
+    #nav ul.dropdown ul { width: 1200px; }
+    #nav .menumodel .fix .image { width: 53%; }
+    #nav ul.dropdown li.menunewcount li,
+    #nav ul.dropdown li.menupreowned li { width: 24.6%; }
+    #videocontainer { font-size: 25px; }
+}
