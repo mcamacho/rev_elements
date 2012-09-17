@@ -1,11 +1,11 @@
-.payment-calculator { padding: 1%; background-color: {setup_color_2}; font-size: 13px; }
+.payment-calculator { padding: 0 7px 5px; background-color: {setup_color_7}; font-size: 13px; }
 .payment-calculator .parameters-wrap { width: 63%; float: left; }
 .payment-calculator .result-wrap { width: 32%; float: right; padding: 1%; color: {setup_color_text_1}; text-align: center; background-color: {setup_color_3}; }
 .payment-calculator .result-wrap h2 { color: {setup_color_text_1}; font-size: 1.7em; line-height: 1em; }
 .payment-calculator .result-wrap div { font-size: 3em; line-height: 1.3em; font-weight: bold; letter-spacing: -0.1em; }
 .payment-calculator .result-wrap a { display: block; color: {setup_color_text_1}; text-decoration: underline; }
 .payment-calculator .result-wrap .apply { padding: 2px 5px; width: 100px; text-decoration: none; font-size: 1.1em; line-height: 1.3em; margin: 0 auto; background-color: {setup_color_1}; }
-.payment-calculator .parameters-wrap h2 { font-size: 1.2em; padding: 6px 0 2px; line-height: 1em; }
+.payment-calculator .parameters-wrap h2 { font-size: 1.2em; line-height: 1em; }
 .payment-calculator .ui-slider { float: left; margin: 2px 12px 0 0; }
 .payment-calculator .ui-slider, .payment-calculator .limits {  width: 73%; }
 .payment-calculator .limits, .payment-calculator .curr { line-height: 1em; }
@@ -15,12 +15,3 @@
 .payment-calculator .ui-slider-horizontal { height: .6em; }
 .payment-calculator .ui-slider .ui-slider-handle { width: 0.9em; }
 #rating.ui-slider { background-image: url('http://cdn.hostrevo.com.s3.amazonaws.com/assets/img/gradientw_bg.png') }
-@media (max-width: 767px) {
-  .payment-calculator { padding: 2%; }
-  .payment-calculator .parameters-wrap { width: 100%; float: none; }
-  .payment-calculator .result-wrap { width: 98%; float: none; margin-top: 1em; }
-  .payment-calculator .curr span { font-size: 1em; font-weight: normal; }
-}
-@media (min-width: 768px) and (max-width: 979px) {
-    .payment-calculator { font-size: 12px; }
-}
