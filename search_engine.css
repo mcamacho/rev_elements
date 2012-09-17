@@ -1,10 +1,10 @@
 /*Drill Down*/
-.drillIt { position: relative; width: 100%; min-height: 8em; z-index: 10; /*border: 2px solid {setup_color_1};*/ background-color: {setup_color_5}; color: {setup_color_4}; font: 12px arial, sans-serif; padding-bottom: 0.4em; }
+.drillIt { position: relative; width: 100%; min-height: 8em; z-index: 10; /*border: 2px solid {setup_color_1};*/ background-color: {setup_color_7}; color: {setup_color_4}; font-size: 12px; padding-bottom: 0.4em; }
 /*.drillIt.stuck { position: fixed; top: 0; width: inherit; }*/
 .drillIt ul, .drillIt p { margin: 0; }
 .drillIt li { line-height: 1.3em; }
 .drillIt form { margin: 0; }
-.drillIt select { height: auto; }
+.drillIt select { height: 2em; width: 59px; float: left; margin-right: 4px; }
 
 .mainb.stuck { position: fixed; top: 5px; right: 5px; width: 1em; text-indent: -9999px; }
 .mainb.stuck .sclose{ background-color: {setup_color_1}; }
@@ -21,7 +21,7 @@ span.dd .condicon { display: inline-block; background: url('{home}/wp-content/mu
 .bcrumb label { display: inline-block; background-color: {setup_color_text_1}; padding: 0 4px; margin: 2px 3px; }
 .bcrumb span { padding: 0 2px; margin: 0 -2px 0 2px; color: {setup_color_2}; font-weight: bold; cursor: pointer; }
 
-.search-top-page { /*position: absolute; right: 5px; top: 30px;*/ color: {setup_color_text_1}; text-align: center; font-weight: bold; padding: 1%; }
+.search-top-page { position: relative; color: {setup_color_5}; text-align: center; font-weight: bold; padding: 1%; float:left; width: 43%; }
 .search-top-page .lab { text-transform: uppercase; font-size: 0.8em; }
 .topnav .quantity span { font-size: 3.8em; line-height: 0.9em; font-weight: bold; }
 .search-top-page .wrap_show { display: none; }
@@ -30,7 +30,7 @@ span.dd .condicon { display: inline-block; background: url('{home}/wp-content/mu
 .ie7 #inventory .condition, .ie8 #inventory .condition { -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; filter: alpha(opacity=0); }
 
 #filter li.wp { /*float: left;*/ position: relative; background-color: transparent; clear: left; }
-#filter button { color: {setup_color_4}; margin: 1px 0px; border-width: 0; }
+#filter button { color: {setup_color_5}; margin: 1px 0px; border-width: 0;  background-color: {setup_color_2}; }
 #filter button:hover, #filter button:focus { border-width: 0; border-color: {setup_color_3}; background: {setup_color_2} none; }
 #filter button.ready { /*color: green;*/ }
 #filter button.included { color: {setup_color_1}; }
@@ -48,7 +48,7 @@ li.wp ul.opt { /*position: absolute; left: 3px; z-index: 100; display: none; bor
 /*li.wp:hover ul.opt, li.wp.mhover ul.opt { display: block; }*/
 li.wp li { width: 92px; float: left; text-align: center; padding: 2px 1px 1px; }
 li.wp a { display: block; line-height: 1.8em; height: 1.8em; color: {setup_color_text_3}; background-color: {setup_color_text_1}; }
-li.wp a:hover { color: {setup_color_text_2}; background-color: {setup_color_2}; }
+li.wp a:hover { color: {setup_color_text_2}; background-color: {setup_color_3}; }
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
@@ -59,24 +59,29 @@ li.wp a:hover { color: {setup_color_text_2}; background-color: {setup_color_2}; 
 .ui-autocomplete { max-height: 300px; overflow-y: auto; overflow-x: hidden; padding-right: 20px; }
 
 #tabs, .ui-tabs .ui-tabs-nav { background: transparent none; border-width: 0; border-radius: 0; padding: 0; }
-#tabs .ui-tabs-nav span { display: none; }
+.tabs1 span { display: none; }
 #tabs .navs { display: none; }
 #tabs1, #tabs2, #tabs3 { /*margin-right: 28%; min-height: 6em;*/ }
 .accordion-body ul.clearfix { padding: 0 6px 6px; }
-#tabs3 ul { height: 20em; }
+#tabs3 ul { height: 20em; padding-top: 0.5em; }
 #tabs3 ul ul { height: 17em; }
 #tabs3 li { width: 100%; }
 
 .wp .ui-button-text-icon-secondary .ui-button-text { padding: .1em; width: 100%;/*100px;*/ }
 
 #sort { font-size: 10px; }
-.garrange a.dir { background: url('http://cdn.hostrevo.com.s3.amazonaws.com/assets/img/sort_arrows.png') no-repeat -14px 0; text-indent: -9999px; }
-.garrange a.dir.asc { background-position: -1px 0; }
-.showresults a { display: block; letter-spacing: 1px; background-color: {setup_color_1=#c10017}; color: {setup_color_text_1}; padding: 2px; text-align: center; font-weight: bold; }
+.garrange a.dir { background: {setup_color_1} url('http://cdn.hostrevo.com.s3.amazonaws.com/assets/img/sort_arrows.png') no-repeat -11px 2px; display: block; width: 14px; height: 18px; float: left; }
+.garrange a.dir.asc { background-position: 1px 2px; }
+.showresults a { display: block; letter-spacing: 1px; background-color: {setup_color_1=#c10017}; color: {setup_color_text_1}; padding: 4px; text-align: center; font-weight: bold; }
+.garrange { position: absolute; right: -110%; top: 13px; width: 78px; }
 .garrange, .showresults { display: none; }
-.showresults { width: 68%; margin: 2px auto; }
+.layout { display: none; position: absolute; top: 5px; right: -40%; width: 70px; }
+.showresults { width: 44%; margin-top: 17px; float: left; }
+.search-top-page .quantity { font-size: 2.6em; }
 #vin { font-size: 1.5em; width: 94%; height: 1em; background: {setup_color_text_1} url('http://cdn.hostrevo.com.s3.amazonaws.com/assets/img/toolbar_find.png') no-repeat 100% 50%; }
-#linetype, #blocktype { padding: 0.3em 1em; background-color: {setup_color_1}; color: {setup_color_text_1}; }
+#linetype, #blocktype { display: block; width: 35px; height: 35px; float: left; }
+#linetype { background: transparent url('http://cdn.hostrevo.com.s3.amazonaws.com/assets/vw-worldauto/bootstrap/list.png') no-repeat;  }
+#blocktype { background: transparent url('http://cdn.hostrevo.com.s3.amazonaws.com/assets/vw-worldauto/bootstrap/grid.png') no-repeat;  }
 
 .inventoryWrapper .bcrumb { width: 100%; margin: 0; border-width: 0; padding: 0; }
 #tabs .location { width: 300px; padding: 6px 0 0; }

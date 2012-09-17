@@ -408,6 +408,7 @@
 				jQuery('#condition').removeAttr('disabled').val('New').change().next().css('visibility', 'visible');
 				msrpar = jQuery('button[value="msrp"]').attr('new');
 			}
+			jQuery('.layout').hide();
 			jQuery('.showresults').show();
 		} else {
 			// label new or used/certified conditional
@@ -554,14 +555,17 @@ jQuery('#filter button').button({
 			jQuery('#radius').val(radiusc);
 		}
 		jQuery('#zipcode, #radius').change(function(e) {
-			var regzip = /^[0-9]{5}$/;
-			var regrad = /^[0-9]{2,3}$/;
+			var regzip = /^[0-9]{5}$/,
+				regrad = /^[0-9]{2,3}$/,
+				reg = jQuery(this).attr('id') === 'zipcode' ? regzip : regrad;
 			jQuery('#radius').removeAttr('disabled');
-			if (regzip.test(jQuery('#zipcode').val()) && regrad.test(jQuery('#radius').val())) {
-				// save the new cookies
-				document.cookie = 'radius=' + escape(jQuery('#radius').val()) + '; path=/';
-				document.cookie = 'zipcode=' + escape(jQuery('#zipcode').val()) + '; path=/';
-				eleAjax();
+			if (reg.test(jQuery('#' + jQuery(this).attr('id')).val())) {				
+				if (regzip.test(jQuery('#zipcode').val()) && regrad.test(jQuery('#radius').val())) {
+					// save the new cookies
+					document.cookie = 'radius=' + escape(jQuery('#radius').val()) + '; path=/';
+					document.cookie = 'zipcode=' + escape(jQuery('#zipcode').val()) + '; path=/';
+					eleAjax();
+				}
 			} else {
 				jQuery(this).val('');
 			}
