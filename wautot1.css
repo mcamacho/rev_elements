@@ -1,7 +1,20 @@
+.topnav.fix, #wrap { max-width: 1400px; margin: 0 auto; }
+
 #content { margin-bottom: 0; }
 #main { float: left; width: 100%; }
 #main .mainw { margin-right: 310px; }
 #rightbar { float: left; width: 300px; margin-left: -310px; padding: 5px; }
+
+@media (max-width: 979px) {  
+    #vehicle-list.fix .finance-wrap { float: none; }  
+    
+    .vehicle-pricing-wrap .price-wrap, .vehicle-pricing-wrap .disclaimer { width: 50%; }
+    .vehicle-pricing-wrap .lease-wrap { width: 43%; position: absolute; top: 1em;	right: 1em; }
+}
+
+@media (max-width: 793px) {
+
+}
 
 @media (max-width: 767px) {
     #content { position: relative; }
@@ -18,7 +31,10 @@
     .topnav .dealerMaker a { float: none; width: auto; height: auto; text-align: left; margin-right: 5em; }
     .topnav .dealerMaker .dealer { display: none; }
     .topnav .dealerMaker h1 { display: block; }
-    .topnav .details li, .topnav .details a, .topnav .menumodel .details div, .topnav .details div span, .topnav .details h3 { font-size: 9px; }
+    .topnav .details li, .topnav .details a,
+    .topnav .menumodel .details div,
+    .topnav .details div span,
+    .topnav .details h3 { font-size: 9px; }
     .topnav .details h4 { font-size: 13px; }
     .topnav.stuck .navwrap { width: 100%; }
     .topnav.stuck { position: fixed; top: 0; left: 0; }
@@ -30,7 +46,13 @@
     #mainslider .dynamic_content ul, #mainslider .modelright { display: none; }
     #mainslider .dynamic_content .vehicle_image { position: relative; top: 0; left: 0; width: 70%; margin: 0 auto; }
     
-    .modelthumbs.rw li { width: 48.8%; }
+    .modelthumbs.rw li, .modelsimilar .fix li { width: 48.8%; }
+    
+    .dFormWrap0 input[type="text"] { font-size: 11px; line-height: 1em; padding: 0; }
+    .dFormWrap0 label { display: inline; }
+    .dFormWrap0 input[type="text"], .dFormWrap0 textarea { float: right; width: 70%; }
+    .dFormWrap0 .printBut.field { float: left; width: 49%; }
+    .dFormWrap0 #form-submit { float: right;  width: 49%; }
 }
 
 @media (max-width: 480px) {
@@ -42,7 +64,8 @@
     #vehicle-list.fix .vehicle { float: none; width: 98%; }
     #mainslider .h3.title { font-size: 1em; line-height: 4em; }
     
-    .modelthumbs.rw li { width: 98%; }
+    .modelthumbs.rw li, .modelsimilar .fix li { width: 98%; }
+    #model_wrap .dynamic_content .vehicle_image { height: 60%; top: 13em; }
 }
 
 @media (max-width: 320px) {
@@ -70,26 +93,6 @@
 @media (min-width: 768px) and (max-width: 979px) {
     #vehicle-list li.down-payment { line-height: 1em; }
     }
-@media (max-width: 979px) {  
-    #vehicle-list.fix .finance-wrap { float: none; }  
-}
-@media (max-width: 793px) {
-}
-
-@media (min-width: 1025px) {
-    #vehicle-list.fix .vehicle { width: 32%; }
-    .search-top-page .layout { display: block; }
-    .modelthumbs.rw li { width: 32.2%; }
-}
-
-@media (min-width: 1350px) {
-    #vehicle-list.fix .vehicle { width: 23.5%; }
-    .modelthumbs.rw li { width: 24%; }
-}
-
-@media (min-width: 1600px) {
-    #vehicle-list.fix .vehicle { width: 18.5%; }
-}
 
 @media (min-width: 980px) and (max-width: 1199px) {
     #nav ul.dropdown ul { width: 980px; }
@@ -98,10 +101,37 @@
     #nav ul.dropdown li.menupreowned li { width: 32.8%; }
 }
 
+@media (min-width: 979px) {
+    .slides .dynamic_content .vehicle_image { height: 120%; right: -2%; top: 2em; }
+    .modelSingle, .modelForm { float: left; }
+    .modelSingle { width: 70%; }
+    .modelForm { width: 28%; margin-left: 1.5%; }
+    
+    .vehicle-main-wrap .vehicle-left { float: left; }
+    .vehicle-main-wrap .vehicle-right { float: right; width: 60%; }
+}
+
+@media (min-width: 1025px) {
+    #vehicle-list.fix .vehicle { width: 32%; }
+    .search-top-page .layout { display: block; }
+    .modelthumbs.rw li, .modelsimilar .fix li { width: 32.2%; }
+    .image_banner, .slides .dynamic_content { font-size: 14px; }
+}
+
 @media (min-width: 1200px) {
     #nav ul.dropdown ul { width: 1200px; }
     #nav .menumodel .fix .image { width: 53%; }
     #nav ul.dropdown li.menunewcount li,
     #nav ul.dropdown li.menupreowned li { width: 24.6%; }
     #videocontainer { font-size: 25px; }
+    .image_banner, .slides .dynamic_content { font-size: 15px; }
+    .slides .dynamic_content .vehicle_image { top: 3em; }
+}
+
+@media (min-width: 1350px) {
+    #vehicle-list.fix .vehicle { width: 23.5%; }
+    .modelthumbs.rw li, .modelsimilar .fix li { width: 24%; }
+    .image_banner, .slides .dynamic_content { font-size: 16px; }
+    .slides .dynamic_content .vehicle_image { top: 1em; }
+    .slides .dynamic_content ul { margin-left: 0; }
 }
