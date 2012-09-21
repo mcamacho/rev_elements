@@ -23,9 +23,9 @@ var mapsC = (function() {
 			mloc, swy, swx, ney, nex, mapOptions, map, marker;
 
 		function attachInfoWindow(marker) {
-			var contentext = '<h5>' + mtitle[counter] + '</h5>';
-			contentext += '<a href="http://' + mid[counter] + '.hostrevo.com" target="_blank">Open Site</a>';
-			contentext += '<br /><a href="javascript:mapsC.assign(' + mzip[counter] + ', 30)">Search Inventory</a>';
+			var contentext = '<h5 class="wmarker">' + mtitle[counter] + '</h5>';
+			contentext += '<div class="wmarker"><a href="http://' + mid[counter] + '.hostrevo.com/inventory/Used/" target="_blank">Open Site</a>';
+			contentext += '<a href="javascript:mapsC.assign(' + mzip[counter] + ', 30)">Zoom In</a></div>';
 			var infowindow = new google.maps.InfoWindow({
 				content: contentext
 			});
@@ -111,6 +111,7 @@ dbasecache.push(' { id: "' + dealers[counter].blog_id + '", name: "' + dealers[c
 			mapOptions = {
 				center: new google.maps.LatLng(xa, ya),
 				zoom: 12,
+				scrollwheel: false,
 				styles: gmapGreyStyle,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				maxZoom: 12
