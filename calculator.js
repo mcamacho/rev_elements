@@ -1,5 +1,8 @@
 (function ($, d, w) {
-    var amount, amountxt, rgx = /(.+)(.{3})/, period, rating, interest, monthly, newp, usedp, hasboolean = true;
+    var amount, amountxt, rgx = /(.+)(.{3})/, period, rating, interest, monthly, newp, usedp, sc, zipc, radiusc, hasboolean = true;
+    sc = d.cookie;
+	zipc = sc.indexOf('zipcode') > -1 ? sc.slice(sc.indexOf('zipcode') + 8, sc.indexOf('zipcode') + 13) : '';
+	radiusc = sc.indexOf('radius') > -1 ? sc.slice(sc.indexOf('radius') + 7, sc.indexOf(';', sc.indexOf('radius') + 7)) : ''; 
     function update () {
         amount = Number($('#amount').slider('value'));
         amountxt = String(amount);
@@ -12,15 +15,20 @@
         $('#curr-period').text(period);
         $('#curr-rating').text(rating);
     }
-    function hasvehicles (condition) {
+    function hasvehicles (condition) {console.log('hasvehicles');
         var condterm = condition === 'Used' ? usedp : newp;
         var minr = (amount - 2500) > 0? (amount - 2500): 0;
         var maxr = amount + 2500;
         var range = minr + '-' + maxr;
+        var caldata = 'json=true&requesttype=count&condition=' + condition + '&' + condterm + '=' + range;
+		if(jQuery('#zipcode').val() !== '' && jQuery('#radius').val() !== '') {
+			caldata += '&zipcode=' + zipc;
+			caldata += '&radius=' + radiusc;
+		} 
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            data: 'json=true&requesttype=count&condition=' + condition + '&' + condterm + '=' + range,
+            data: caldata,
             url: '{THEME_ROOT}/_ajax.php',
             success: function (msg) {
                 if (Number(msg.count) > 0) {
@@ -48,8 +56,12 @@
         var x, x1, x2;
         update();
         if (hasboolean) {
-            hasvehicles('New');
-            hasvehicles('Used');
+          if (typeof(customDrill) !== 'undefined' && customDrill.blocknew) { } else {
+            	hasvehicles('New');
+        	}
+          if (typeof(customDrill) !== 'undefined' && customDrill.blockused) { } else {
+            	hasvehicles('Used');
+            }
         }
         rating = Number(rating);
         if (rating < 550) {
@@ -78,6 +90,12 @@
     	//get the variable for new and preowned payment values
         newp = $('.payment-calculator .limits').attr('new');
         usedp = $('.payment-calculator .limits').attr('used');
+        if (typeof(customDrill) !== 'undefined' && customDrill.blocknew) {
+        	$('.newveh').hide();
+    	}
+        if (typeof(customDrill) !== 'undefined' && customDrill.blockused) {
+        	$('.preveh').hide();
+        }
         //assign maxv to borrow depending on existance of price
         var maxv = jQuery('.parameter:eq(0) .last').attr('maxv');
         if (maxv.indexOf('price') > -1 || window.location.pathname.indexOf('vehicle') < 0) {
