@@ -9,10 +9,6 @@
     #vehicle-list.fix .finance-wrap { float: none; }
 }
 
-@media (max-width: 793px) {
-
-}
-
 @media (max-width: 767px) {
     #content { position: relative; }
     #main { float: none; position: relative; }
@@ -37,7 +33,6 @@
     .topnav .details h4 { font-size: 13px; }
     .topnav.stuck .navwrap { width: 100%; }
     .topnav.stuck { position: fixed; top: 0; left: 0; }
-    /*#wrap { padding-top: 2em; }*/
     .mainw #map_canvas { height: 200px; }
     
     #mainslider h3.title { font-size: 1.3em; line-height: 3em; }
@@ -55,12 +50,11 @@
 }
 
 @media (max-width: 480px) {
-    /* #nav ul.dropdown li ul { /*width: 40%;*/ display: none !important; } */
     #nav li.menumodel li.fix { width: 100%; }
     #nav .menumodel .modelInfo { width: 0; height: 0; visibility: hidden; }
     #nav ul.dropdown li.menunewcount li,
     #nav ul.dropdown li.menupreowned li { width: 99%; }
-    #vehicle-list.fix .vehicle { float: none; width: 98%; }
+    #vehicle-list.fix .vehicle { width: 98%; }
     #mainslider .h3.title { font-size: 1em; line-height: 4em; }
     
     .modelthumbs.rw li, .modelsimilar .fix li { width: 96%; }
