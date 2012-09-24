@@ -31,7 +31,7 @@
 			});
 		}
 	}());
-	var ajaxPHP, disabled, tempCount, disclaimer, conditions, conditionsId, pname, pArray, getCount, vehicleLoad, selectEmpty, postData, selAjax, eleAjax, countAjax, defaultImage, addFilter, compareArray, addOptions, countUpdate, cond, urlArray, urlEle, currentIndex, xx, butSelected, scrollopt, next, scrollActive, loadAjax, setCookie, newLocation, scrollverify, acomplete;
+	var ajaxPHP, disabled, tempCount, disclaimer, conditions, conditionsId, pname, pArray, getCount, vehicleLoad, selectEmpty, postData, selAjax, eleAjax, countAjax, defaultImage, addFilter, compareArray, addOptions, countUpdate, cond, urlArray, urlEle, currentIndex, xx, butSelected, scrollopt, next, scrollActive, loadAjax, setCookie, newLocation, scrollverify, acomplete, oversearch;
 	ajaxPHP = '{THEME_ROOT}/_ajax.php';
 	disabled = '<option value="">Select</option>';
 	tempCount = 0;
@@ -39,7 +39,7 @@
 	conditions = [];
 	conditionsId = [];
 	scrollopt = false;
-	scrollActive = true;
+	scrollActive = false;
 	loadAjax = true;
 	pname = window.location.pathname;
 	pname = pname.substr(1, pname.length - 2);
@@ -158,7 +158,7 @@
 	// build POST
 	postData = function(out) {
 		var search = '';
-		search += 'json=true';
+		search += 'json=true&show=50';
 		/* search += '&inventory=true'; */
 		if (jQuery('#sort').val() !== 'empty') {
 			search += '&sort=' + jQuery('#sort').val();
@@ -214,6 +214,7 @@
 				jQuery('div.search-top-page span.total').text(msg.count);
 				getCount();
 				scrollverify(msg.count);
+				scrollActive = true;
 			},
 			error: function(jqxhr, msg) {
 				console.log(msg);
@@ -400,6 +401,7 @@
 	jQuery(document).ready(function() {
 		// Hide Condition Selector if inventory page && assign price button variable
 		var msrpar = 'msrp';
+		oversearch = false;
 		if (pArray[0] !== 'inventory') {
 			if (typeof(customDrill) !== 'undefined' && customDrill.force) {
 				jQuery('#condition').val(customDrill.force).change();
@@ -493,6 +495,7 @@ jQuery('#filter button').button({
 			});
 			jQuery('ul.opt').empty();
 			jQuery('button').removeClass('ready');
+			scrollActive = false;
 			addFilter(jQuery(prevBut).val(), true);
 		});
 		// bcrumb option interactivity
@@ -602,24 +605,38 @@ jQuery('#filter button').button({
 		jQuery('.tabs3').click(function() {
 			jQuery('.bcrumb, .showresults').hide();
 		});
-		// scroll Next vehicle trigger
-		if (scrollopt) {
-			window.onscroll = function() {
-				var docHeight, winHeight, scrollTop, heiDif;
-				docHeight = jQuery(document).height();
-				winHeight = jQuery(window).height();
-				scrollTop = jQuery(document).scrollTop();
+		// scroll behavior
+		jQuery('#rightaccordion').mouseenter(function (){
+				oversearch = true;
+				if (jQuery('#nav:visible').length > 0) {
+					jQuery(document).scrollTop(0);
+					jQuery('#rightaccordion').css('position', 'relative');
+				}
+			}).mouseleave(function (){
+				oversearch = false;
+			});
+		window.onscroll = function() {
+			var docHeight = jQuery(document).height(),
+				winHeight = jQuery(window).height(),
+				scrollTop = jQuery(document).scrollTop(),
 				heiDif = docHeight - scrollTop;
+			if (scrollopt) {
 				if (scrollTop > 100) {
 					jQuery('.topnav').addClass('stuck');
 				} else {
 					jQuery('.topnav').removeClass('stuck');
 				}
-				if (scrollActive && (heiDif - (winHeight * 1.5)) < winHeight) { /*winHeight = 0;*/
+				if (scrollActive && (heiDif - (winHeight * 1.5)) < winHeight) {
+					/*winHeight = 0;*/
 					scrollActive = false;
 					next();
 				}
-			};
-		}
+			}
+			if (jQuery('#nav:visible').length  > 0 && !oversearch && scrollTop > 100) {
+				jQuery('#rightaccordion').css('position', 'fixed');
+			} else {
+				jQuery('#rightaccordion').css('position', 'relative');
+			}
+		};
 	});
 }());
